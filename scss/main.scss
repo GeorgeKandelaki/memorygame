@@ -1,0 +1,78 @@
+$color-cyan-normal-1: #2d89ef;
+$color-white: #f0f0f0;
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    font-size: 1.6rem;
+
+    display: flex;
+    justify-content: center;
+}
+
+.game_board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    width: 60rem;
+    margin-top: 10rem;
+}
+
+.card {
+    background-color: $color-cyan-normal-1;
+    border-radius: 0.5rem;
+
+    width: 13rem;
+    height: 12rem;
+    cursor: pointer;
+    perspective: 100rem;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.card--inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: all 0.5s ease;
+}
+
+.card.flipped .card--inner {
+    transform: rotateY(180deg);
+}
+
+.card__back,
+.card__front {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+.card__front {
+    background-color: $color-white;
+    color: $color-cyan-normal-1;
+    transform: rotateY(180deg);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card__front i {
+    font-size: 6rem;
+    color: $color-cyan-normal-1;
+}
